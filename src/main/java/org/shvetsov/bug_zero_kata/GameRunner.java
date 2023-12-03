@@ -8,34 +8,20 @@ import java.util.Random;
  */
 public class GameRunner {
 
-	private static boolean notAWinner;
-
 	public static void main(String[] args) {
 		Random rand = new Random();
 		playGame(rand);
-
 	}
 
 	public static void playGame(Random rand) {
-		Game aGame = new Game();
+		Game aGame = new Game.GameBuilder("Anton", "Sasha", "Dany")
+				.rollStepSupplier(() -> rand.nextInt(5) + 1)
+				.correctAnswerCheckerSupplier(() -> rand.nextInt(9) != 7)
+				.pursesToWin(10)
+				.boardSize(25)
+				.build();
 
-		aGame.add("Chet");
-		aGame.add("Pat");
-		aGame.add("Sue");
-
-
-		do {
-
-			aGame.roll(rand.nextInt(5) + 1);
-
-			if (rand.nextInt(9) == 7) {
-				notAWinner = aGame.wrongAnswer();
-			} else {
-				notAWinner = aGame.wasCorrectlyAnswered();
-			}
-
-
-
-		} while (notAWinner);
+		Game.Player winner = aGame.start();
+		System.out.println(winner.getName() + " congratulations!");
 	}
 }
