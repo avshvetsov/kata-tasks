@@ -1,8 +1,11 @@
 package org.shvetsov.lift_kata;
 
-/**
- * The Lift Kata
- *  <p><a href="https://kata-log.rocks/lift-kata">lift-kata</a>
- */
-public class Lift {
+import java.util.function.Consumer;
+
+public interface Lift {
+
+
+    int getCurrentFloor();
+
+    LiftState call(int destinationFloor, Consumer<LiftState> callBack);
 }
