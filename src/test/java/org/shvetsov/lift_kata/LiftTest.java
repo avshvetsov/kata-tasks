@@ -1,4 +1,4 @@
-package lift_kata;
+package org.shvetsov.lift_kata;
 
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeEach;

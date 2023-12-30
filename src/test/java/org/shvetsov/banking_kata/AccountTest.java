@@ -1,4 +1,4 @@
-package banking_kata;
+package org.shvetsov.banking_kata;
 
 import org.junit.jupiter.api.Test;
 import org.shvetsov.banking_kata.Account;
